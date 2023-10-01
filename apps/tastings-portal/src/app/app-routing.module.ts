@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/homepage', pathMatch: 'full' },
   {
     path: 'products',
     loadChildren: () =>
@@ -31,11 +32,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/homepage/homepage.module').then((m) => m.HomepageModule),
   },
-  { path: '', redirectTo: '/homepage', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
