@@ -1,0 +1,74 @@
+{
+  "name": "mezcal-mystique-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mezcal-mystique-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/mezcal-mystique-api",
+        "main": "apps/mezcal-mystique-api/src/main.ts",
+        "tsConfig": "apps/mezcal-mystique-api/tsconfig.app.json",
+        "assets": [
+          "apps/mezcal-mystique-api/src/assets"
+        ],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/mezcal-mystique-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "mezcal-mystique-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "mezcal-mystique-api:build:development"
+        },
+        "production": {
+          "buildTarget": "mezcal-mystique-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/mezcal-mystique-api/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/mezcal-mystique-api/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

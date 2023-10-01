@@ -1,0 +1,80 @@
+@import '../../../libs/shared-styles/src/lib/breakpoints';
+@import '../../../libs/shared-styles/src/lib/mixins';
+
+body {
+    background-color: whitesmoke;
+    margin: auto;
+    height: 100vh;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+}
+
+p, button, a {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.content {
+    display: block;
+    height: 100%;
+    padding: 24px;
+}
+
+img {
+    padding: 9px;
+}
+
+.logo {
+    display: block;
+    height: 92px;
+    width: 196px;
+    background-image: url(./assets/logo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.content {
+    display: grid;
+    grid-gap: 13px;
+    grid-template-areas: "info" "gallery";
+    grid-template-rows: 1fr 2fr;
+    @include respond-to('medium'){
+        grid-template-areas: "info gallery";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+
+        > .gallery {
+            grid-area: gallery;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    > .information {
+        grid-area: info;
+    }
+    > .gallery {
+        display: grid;
+        grid-area: gallery;
+        place-items: center;
+    }
+
+    .gallery img {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+        /* Set initial box shadow */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .gallery img:hover {
+        /* This will scale the image up a bit, and rotate it slightly */
+        transform: scale(1.05) rotate(3deg); 
+        
+        /* This will add a shadow to make it appear like it's lifting off the page */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+}

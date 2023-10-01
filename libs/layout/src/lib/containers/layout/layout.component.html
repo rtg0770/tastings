@@ -1,0 +1,42 @@
+<mat-toolbar class="flex-container">
+  <a class="logo-wrapper" href="/homepage"><div class="logo"></div></a>
+  <button class="menu-toggle" (click)="sidenav.toggle()">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="menu icon"
+      svgIcon="menu"
+    ></mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened="false">
+    <nav>
+      <button
+        mat-button
+        [routerLink]="['/our-tastings']"
+        routerLinkActive="router-link-active"
+      >
+        Our Tastings
+      </button>
+      <button
+        mat-button
+        [routerLink]="['/about-us']"
+        routerLinkActive="router-link-active"
+      >
+        About Us
+      </button>
+      <button
+        mat-button
+        [routerLink]="['/contact-us']"
+        routerLinkActive="router-link-active"
+      >
+        Contact Us
+      </button>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content
+    ><ng-content></ng-content>
+    <mezcal-mystique-footer></mezcal-mystique-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

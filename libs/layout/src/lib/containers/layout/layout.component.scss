@@ -1,0 +1,33 @@
+@import '../../../../../shared-styles/src/lib/breakpoints';
+@import '../../../../../shared-styles/src/lib/mixins';
+
+nav {
+    background-color: whitesmoke;
+    height: 100%;
+    > :nth-child(n){
+        width: 100%;
+        clear: both;
+    }
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: whitesmoke;
+}
+
+.menu-toggle {
+    border: 0;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+mat-sidenav-container {
+    background-color: whitesmoke;
+}
